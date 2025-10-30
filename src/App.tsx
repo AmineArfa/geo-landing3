@@ -31,7 +31,7 @@ function App() {
   const [flowState, setFlowState] = useState<FlowState>('idle');
   const [results, setResults] = useState<AnalysisResponse | null>(null);
   const [url, setUrl] = useState('');
-  const [email, setEmail] = useState(''); // Stored for future backend integration
+  const [_email, setEmail] = useState(''); // Stored for future backend integration
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showExitIntent, setShowExitIntent] = useState(false);
