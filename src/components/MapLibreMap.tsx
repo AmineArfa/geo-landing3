@@ -50,6 +50,21 @@ export function MapLibreMap({
       interactive: true,
     });
 
+    // Handle map errors
+    map.current.on('error', (e) => {
+      console.error('Map error:', e);
+      if (mapContainer.current) {
+        mapContainer.current.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #fafafa; color: #666; font-family: system-ui; padding: 2rem; text-align: center;">
+            <div>
+              <p style="font-size: 1rem; margin-bottom: 0.5rem;">Map failed to load</p>
+              <p style="font-size: 0.875rem; color: #999;">Please check your MapTiler API key configuration</p>
+            </div>
+          </div>
+        `;
+      }
+    });
+
     // Clean up map style after load
     map.current.on('load', () => {
       if (!map.current) return;
