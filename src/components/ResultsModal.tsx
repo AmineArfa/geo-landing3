@@ -21,7 +21,8 @@ export function ResultsModal({
 }: ResultsModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const ctaVariant = getCTAVariant();
-  const layoutVariant = getModalLayoutVariant();
+  // Note: getModalLayoutVariant() is called for A/B test tracking but layout is always compact on mobile
+  getModalLayoutVariant();
 
   useEffect(() => {
     trackEvent('result_shown', { domain });
@@ -88,8 +89,6 @@ export function ResultsModal({
     B: 'Unlock Insights',
     C: 'Join Waitlist',
   }[ctaVariant];
-
-  const isCompact = layoutVariant === 'B';
 
   return (
     <AnimatePresence>

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 const useCases = [
   {
@@ -57,8 +56,6 @@ const useCases = [
 ];
 
 export function UseCases() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <section id="use-cases" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
       {/* Background - Hidden on mobile */}
@@ -92,8 +89,6 @@ export function UseCases() {
         {/* Card Grid - Cleaner on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
           {useCases.map((useCase, index) => {
-            const isHovered = hoveredIndex === index;
-
             return (
               <motion.div
                 key={useCase.title}
@@ -101,8 +96,6 @@ export function UseCases() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
                 whileHover={{ y: -4 }}
                 className="group relative"
               >
@@ -133,7 +126,7 @@ export function UseCases() {
                     {/* Benefits - Simpler on mobile */}
                     <div className="mb-4">
                       <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-                        {useCase.benefits.map((benefit, i) => (
+                        {useCase.benefits.map((benefit) => (
                           <div
                             key={benefit}
                             className="flex items-center gap-1.5 text-xs text-gray-700"
