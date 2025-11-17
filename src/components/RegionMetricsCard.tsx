@@ -40,79 +40,79 @@ export function RegionMetricsCard({ region, position, isVisible }: RegionMetrics
             transform: cardPosition ? 'translate(-50%, calc(-100% - 16px))' : 'translate(-50%, -50%)',
           }}
         >
-          {/* Modern Elegant Card */}
-          <div className="relative bg-white/98 backdrop-blur-2xl border border-gray-200/80 rounded-2xl shadow-2xl overflow-hidden min-w-[280px] max-w-[340px]">
+          {/* Modern Elegant Card - Mobile-First Responsive */}
+          <div className="relative bg-white/98 backdrop-blur-2xl border border-gray-200/80 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl overflow-hidden min-w-[260px] max-w-[300px] sm:min-w-[280px] sm:max-w-[340px]">
             {/* Gradient accent top */}
-            <div 
-              className="absolute top-0 left-0 right-0 h-1"
-              style={{ 
+            <div
+              className="absolute top-0 left-0 right-0 h-0.5 sm:h-1"
+              style={{
                 background: `linear-gradient(90deg, ${region.hexColor}00, ${region.hexColor}, ${region.hexColor}00)`
               }}
             />
-            
-            {/* Decorative glow */}
-            <div 
-              className="absolute -inset-2 opacity-20 blur-xl pointer-events-none"
-              style={{ 
+
+            {/* Decorative glow - hidden on mobile for performance */}
+            <div
+              className="absolute -inset-2 opacity-0 sm:opacity-20 blur-xl pointer-events-none"
+              style={{
                 background: `radial-gradient(circle, ${region.hexColor}40, transparent 70%)`
               }}
             />
-            
+
             {/* Content */}
-            <div className="relative p-5 space-y-4">
+            <div className="relative p-3 sm:p-5 space-y-3 sm:space-y-4">
               {/* Header */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2.5">
-                  <div 
-                    className="w-2.5 h-2.5 rounded-full shadow-sm"
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full shadow-sm"
                     style={{ backgroundColor: region.hexColor }}
                   />
-                  <h3 className="text-lg font-bold text-gray-900">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900">
                     {region.name}
                   </h3>
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <p className="text-xs sm:text-xs text-gray-600 leading-relaxed line-clamp-2 sm:line-clamp-none">
                   {region.insights}
                 </p>
               </div>
 
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-100/80">
+              {/* Metrics Grid - Mobile-First: Stack on small screens, side-by-side on larger */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-gray-100/80">
                 <div className="text-center">
-                  <div className="text-[10px] text-gray-500 mb-1.5 font-medium uppercase tracking-wider">Sentiment</div>
-                  <div 
-                    className="text-2xl font-bold tracking-tight"
+                  <div className="text-[9px] sm:text-[10px] text-gray-500 mb-1 sm:mb-1.5 font-medium uppercase tracking-wider">Sentiment</div>
+                  <div
+                    className="text-lg sm:text-2xl font-bold tracking-tight"
                     style={{ color: region.hexColor }}
                   >
                     {region.sentiment}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-[10px] text-gray-500 mb-1.5 font-medium uppercase tracking-wider">Ranking</div>
-                  <div className="text-2xl font-bold tracking-tight text-gray-900">
+                  <div className="text-[9px] sm:text-[10px] text-gray-500 mb-1 sm:mb-1.5 font-medium uppercase tracking-wider">Ranking</div>
+                  <div className="text-lg sm:text-2xl font-bold tracking-tight text-gray-900">
                     {region.llmRanking}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-[10px] text-gray-500 mb-1.5 font-medium uppercase tracking-wider">Mentions</div>
-                  <div className="text-2xl font-bold tracking-tight text-gray-900">
+                  <div className="text-[9px] sm:text-[10px] text-gray-500 mb-1 sm:mb-1.5 font-medium uppercase tracking-wider">Mentions</div>
+                  <div className="text-lg sm:text-2xl font-bold tracking-tight text-gray-900">
                     {region.aiMentions}
                   </div>
                 </div>
               </div>
 
-              {/* Competitors */}
+              {/* Competitors - Simplified on mobile */}
               {region.competitors && region.competitors.length > 0 && (
-                <div className="pt-4 border-t border-gray-100/80">
-                  <div className="text-[10px] text-gray-500 mb-2 font-medium uppercase tracking-wider">Competitors</div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {region.competitors.map((competitor, idx) => (
+                <div className="pt-3 sm:pt-4 border-t border-gray-100/80">
+                  <div className="text-[9px] sm:text-[10px] text-gray-500 mb-1.5 sm:mb-2 font-medium uppercase tracking-wider">Competitors</div>
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                    {region.competitors.slice(0, 5).map((competitor, idx) => (
                       <motion.span
                         key={idx}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: idx * 0.05 }}
-                        className="px-2.5 py-1 bg-gray-50/80 border border-gray-200/60 rounded-md text-xs text-gray-700 font-medium"
+                        className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-gray-50/80 border border-gray-200/60 rounded text-[10px] sm:text-xs text-gray-700 font-medium"
                       >
                         {competitor}
                       </motion.span>

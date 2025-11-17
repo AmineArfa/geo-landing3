@@ -117,7 +117,7 @@ export function MapLibreMap({
         data: geoJsonData,
       });
 
-      // Add big visible dots on the map
+      // Add big visible dots on the map - larger for touch targets on mobile
       map.current.addLayer({
         id: 'region-dots',
         type: 'circle',
@@ -127,8 +127,8 @@ export function MapLibreMap({
             'interpolate',
             ['linear'],
             ['get', 'sentimentValue'],
-            3, 16,
-            15, 24,
+            3, 18,  // Increased base size for better touch targets
+            15, 28,
           ],
           'circle-color': ['get', 'hexColor'],
           'circle-opacity': 0.8,
@@ -138,11 +138,12 @@ export function MapLibreMap({
       });
     });
 
-    // Add navigation controls
-    map.current.addControl(
-      new maplibregl.NavigationControl({ showCompass: false }),
-      'top-right'
-    );
+    // Add navigation controls - simplified for mobile
+    const nav = new maplibregl.NavigationControl({
+      showCompass: false,
+      visualizePitch: false
+    });
+    map.current.addControl(nav, 'top-right');
 
     // Handle map clicks for region selection
     map.current.on('click', (e) => {
@@ -259,19 +260,19 @@ export function MapLibreMap({
         [
           'case',
           ['==', ['get', 'id'], selectedRegionId || ''],
-          28,
+          32,  // Increased for touch-friendly selection
           ['==', ['get', 'id'], hoveredRegionId || ''],
-          22,
-          16,
+          24,
+          18,
         ],
         15,
         [
           'case',
           ['==', ['get', 'id'], selectedRegionId || ''],
-          36,
+          40,
           ['==', ['get', 'id'], hoveredRegionId || ''],
-          30,
-          24,
+          34,
+          28,
         ],
       ]);
 
@@ -287,11 +288,11 @@ export function MapLibreMap({
   }, [selectedRegionId, hoveredRegionId]);
 
   return (
-    <div className="relative w-full h-full rounded-2xl overflow-hidden">
+    <div className="relative w-full h-[300px] xs:h-[400px] sm:h-[500px] md:h-[600px] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden">
       <div
         ref={mapContainer}
         className="w-full h-full"
-        style={{ borderRadius: '16px' }}
+        style={{ borderRadius: 'inherit' }}
       />
     </div>
   );

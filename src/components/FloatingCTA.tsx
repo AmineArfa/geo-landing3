@@ -31,16 +31,18 @@ export function FloatingCTA() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 100 }}
-        className="fixed bottom-4 sm:bottom-6 left-4 right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-40 md:hidden"
+        className="fixed bottom-3 xs:bottom-4 sm:bottom-6 left-3 right-3 xs:left-4 xs:right-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-40 md:hidden"
       >
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:max-w-sm mx-auto">
+        <div className="bg-white rounded-xl xs:rounded-2xl shadow-2xl border border-gray-200 px-4 xs:px-5 sm:px-6 py-3 xs:py-3.5 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 xs:gap-3.5 sm:gap-4 w-full sm:max-w-sm mx-auto">
           <div className="flex-1 min-w-0">
-            <p className="text-xs sm:text-sm font-semibold text-gray-900 leading-tight">Ready to analyze your brand?</p>
+            <p className="text-xs xs:text-sm font-semibold text-gray-900 leading-tight">
+              Ready to analyze your brand?
+            </p>
             <p className="text-xs text-gray-600 mt-0.5">Get instant insights</p>
           </div>
           <button
             onClick={handleClick}
-            className="px-4 py-2.5 sm:py-2 bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs sm:text-sm font-semibold rounded-lg hover:shadow-lg transition-all whitespace-nowrap flex-shrink-0 w-full sm:w-auto"
+            className="min-h-touch px-4 xs:px-5 py-2.5 xs:py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white text-xs xs:text-sm font-semibold rounded-lg hover:shadow-lg transition-all whitespace-nowrap flex-shrink-0 w-full sm:w-auto"
           >
             Try Free
           </button>
@@ -49,4 +51,3 @@ export function FloatingCTA() {
     </AnimatePresence>
   );
 }
-

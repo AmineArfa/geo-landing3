@@ -45,6 +45,38 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Inter', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        // Fluid typography using clamp() for better mobile-first scaling
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
+      },
+      spacing: {
+        // Touch-friendly spacing - minimum 44px for touch targets
+        'touch': '44px',
+        'touch-sm': '40px',
+        'touch-lg': '48px',
+      },
+      minHeight: {
+        'touch': '44px',
+        'touch-sm': '40px',
+        'touch-lg': '48px',
+      },
+      minWidth: {
+        'touch': '44px',
+        'touch-sm': '40px',
+        'touch-lg': '48px',
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.4s ease-out',
@@ -71,6 +103,11 @@ export default {
       },
       backdropBlur: {
         xs: '2px',
+      },
+      screens: {
+        // Mobile-first breakpoints with explicit xs
+        'xs': '480px',
+        // sm, md, lg, xl, 2xl inherit from default Tailwind
       },
     },
   },

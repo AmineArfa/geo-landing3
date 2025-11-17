@@ -28,7 +28,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
+    <section id="faq" className="py-12 xs:py-16 sm:py-20 md:py-24 px-4 xs:px-5 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
@@ -40,23 +40,23 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-8 xs:mb-10 sm:mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-6">
+          <div className="inline-flex items-center gap-2 px-3 xs:px-4 py-1.5 xs:py-2 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-4 xs:mb-5 sm:mb-6">
             <span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-accent-700">FAQ</span>
+            <span className="text-xs xs:text-sm font-semibold text-accent-700">FAQ</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 sm:mb-8 px-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 xs:mb-5 sm:mb-6 md:mb-8 px-2 xs:px-4">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               Frequently asked questions
             </span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-2 xs:px-4">
             Everything you need to know about LLM visibility monitoring
           </p>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 xs:space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -64,19 +64,19 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200/50 shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white rounded-xl xs:rounded-2xl overflow-hidden border border-gray-200/50 shadow-lg hover:shadow-xl transition-shadow"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-left flex items-center justify-between hover:bg-gray-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 group"
+                className="w-full min-h-[56px] xs:min-h-[60px] sm:min-h-[64px] px-4 xs:px-5 sm:px-6 md:px-8 py-4 xs:py-4.5 sm:py-5 md:py-6 text-left flex items-center justify-between hover:bg-gray-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 group"
                 aria-expanded={openIndex === index}
               >
-                <span className="font-bold text-gray-900 text-base sm:text-lg pr-6 sm:pr-8 group-hover:text-accent-600 transition-colors">
+                <span className="font-bold text-gray-900 text-sm xs:text-base sm:text-lg pr-4 xs:pr-6 sm:pr-8 group-hover:text-accent-600 transition-colors leading-snug">
                   {faq.question}
                 </span>
                 <motion.svg
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  className="w-6 h-6 text-gray-500 flex-shrink-0"
+                  className="w-5 h-5 xs:w-6 xs:h-6 text-gray-500 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -93,7 +93,7 @@ export function FAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 text-sm sm:text-base text-gray-600 leading-relaxed">
+                    <div className="px-4 xs:px-5 sm:px-6 md:px-8 pb-4 xs:pb-5 sm:pb-6 text-sm xs:text-base text-gray-600 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -106,4 +106,3 @@ export function FAQ() {
     </section>
   );
 }
-

@@ -60,7 +60,7 @@ export function UseCases() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="use-cases" className="py-20 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
+    <section id="use-cases" className="py-16 xs:py-20 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
@@ -68,32 +68,33 @@ export function UseCases() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header - Mobile-first typography */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16 md:mb-20"
+          className="text-center mb-12 xs:mb-16 sm:mb-20 md:mb-24"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-6">
             <span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-accent-700">Use Cases</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 sm:mb-8 px-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 xs:mb-6 sm:mb-8 px-4">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               Built for teams like yours
             </span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
             See how different teams use LLM visibility monitoring to make data-driven decisions
           </p>
         </motion.div>
 
-        {/* Modern Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Modern Card Grid - Mobile-first */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 xs:gap-5 sm:gap-6">
           {useCases.map((useCase, index) => {
             const isHovered = hoveredIndex === index;
-            
+
             return (
               <motion.div
                 key={useCase.title}
@@ -106,33 +107,33 @@ export function UseCases() {
                 whileHover={{ y: -4 }}
                 className="group relative"
               >
-                <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-white border border-gray-200/60 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                <div className="relative h-full p-5 xs:p-6 sm:p-8 rounded-xl xs:rounded-2xl bg-white border border-gray-200/60 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
                   {/* Gradient accent */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${useCase.gradient} transition-all duration-300 ${isHovered ? 'h-1.5' : ''}`} />
-                  
+
                   {/* Decorative glow */}
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${useCase.gradient} opacity-0 group-hover:opacity-5 blur-2xl transition-opacity duration-300`} />
-                  
+                  <div className={`absolute top-0 right-0 w-24 h-24 xs:w-32 xs:h-32 bg-gradient-to-br ${useCase.gradient} opacity-0 group-hover:opacity-5 blur-2xl transition-opacity duration-300`} />
+
                   {/* Content */}
                   <div className="relative">
-                    {/* Header with Icon */}
-                    <div className="flex items-start gap-4 mb-5">
-                      <div className={`text-3xl sm:text-4xl p-3 rounded-xl bg-gradient-to-br ${useCase.gradient} bg-opacity-10 group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+                    {/* Header with Icon - Mobile-first */}
+                    <div className="flex items-start gap-3 xs:gap-4 mb-4 xs:mb-5">
+                      <div className={`text-2xl xs:text-3xl sm:text-4xl p-2.5 xs:p-3 rounded-lg xs:rounded-xl bg-gradient-to-br ${useCase.gradient} bg-opacity-10 group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                         {useCase.icon}
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-accent-600 transition-colors">
+                        <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-accent-600 transition-colors">
                           {useCase.title}
                         </h3>
-                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                        <p className="text-sm xs:text-base text-gray-600 leading-relaxed">
                           {useCase.description}
                         </p>
                       </div>
                     </div>
 
-                    {/* Benefits Grid */}
-                    <div className="mb-6">
-                      <div className="grid grid-cols-2 gap-2">
+                    {/* Benefits Grid - Mobile-first */}
+                    <div className="mb-5 xs:mb-6">
+                      <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
                         {useCase.benefits.map((benefit, i) => (
                           <motion.div
                             key={benefit}
@@ -140,7 +141,7 @@ export function UseCases() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="flex items-center gap-2 text-sm text-gray-700"
+                            className="flex items-center gap-2 text-xs xs:text-sm text-gray-700"
                           >
                             <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${useCase.gradient}`} />
                             <span className="font-medium">{benefit}</span>
@@ -149,8 +150,8 @@ export function UseCases() {
                       </div>
                     </div>
 
-                    {/* Example - Compact */}
-                    <div className="pt-5 border-t border-gray-100">
+                    {/* Example - Compact - Mobile-first */}
+                    <div className="pt-4 xs:pt-5 border-t border-gray-100">
                       <div className="flex items-start gap-2">
                         <svg className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />

@@ -18,39 +18,39 @@ function FlatRegionCard({ region, isSelected, isExpanded, onClick }: FlatRegionC
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={!isExpanded ? { scale: 1.03, y: -4 } : {}}
-      whileTap={{ scale: 0.98 }}
+      whileHover={!isExpanded ? { scale: 1.02, y: -2 } : {}}
+      whileTap={{ scale: 0.97 }}
       onClick={onClick}
       layout
-      className={`relative bg-white/98 backdrop-blur-sm border rounded-xl cursor-pointer transition-all duration-300 overflow-hidden ${
-        isSelected 
-          ? 'border-gray-900 shadow-xl ring-2 ring-gray-900/10' 
-          : 'border-gray-200 hover:border-gray-300 hover:shadow-lg'
+      className={`relative bg-white/98 backdrop-blur-sm border rounded-lg sm:rounded-xl cursor-pointer transition-all duration-300 overflow-hidden touch-manipulation ${
+        isSelected
+          ? 'border-gray-900 shadow-lg sm:shadow-xl ring-2 ring-gray-900/10'
+          : 'border-gray-200 hover:border-gray-300 hover:shadow-md sm:hover:shadow-lg'
       }`}
     >
-      {/* Accent indicator */}
-      <motion.div 
+      {/* Accent indicator - thinner on mobile */}
+      <motion.div
         layout
-        className="absolute top-0 left-0 right-0 h-1 rounded-t-xl"
+        className="absolute top-0 left-0 right-0 h-0.5 sm:h-1 rounded-t-lg sm:rounded-t-xl"
         style={{ backgroundColor: region.hexColor }}
-        animate={{ height: isSelected ? '4px' : '4px' }}
+        animate={{ height: isSelected ? '3px' : '2px' }}
       />
-      
-      <motion.div 
+
+      <motion.div
         layout
-        className="p-3 space-y-2.5"
+        className="p-2.5 sm:p-3 space-y-2 sm:space-y-2.5"
       >
-        {/* Header - Always visible */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div 
-              className="w-2 h-2 rounded-full"
+        {/* Header - Always visible - Mobile optimized */}
+        <div className="flex items-center justify-between min-h-[24px]">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div
+              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full flex-shrink-0"
               style={{ backgroundColor: region.hexColor }}
             />
-            <h3 className="text-sm font-bold text-gray-900">{region.name}</h3>
+            <h3 className="text-xs sm:text-sm font-bold text-gray-900 truncate">{region.name}</h3>
           </div>
-          <motion.div 
-            className="text-xs text-gray-400"
+          <motion.div
+            className="text-xs text-gray-400 flex-shrink-0 ml-2"
             animate={{ rotate: isSelected ? 180 : 0 }}
             transition={{ duration: 0.3 }}
           >
@@ -58,32 +58,32 @@ function FlatRegionCard({ region, isSelected, isExpanded, onClick }: FlatRegionC
           </motion.div>
         </div>
 
-        {/* Compact Metrics - Always visible */}
-        <div className="grid grid-cols-3 gap-2">
-          <div className="text-center">
-            <div className="text-[9px] text-gray-500 mb-0.5 font-medium">Sentiment</div>
-            <div 
-              className="text-base font-bold"
+        {/* Compact Metrics - Always visible - Mobile-First: Smaller on mobile */}
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+          <div className="text-center min-w-0">
+            <div className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Sentiment</div>
+            <div
+              className="text-sm sm:text-base font-bold truncate"
               style={{ color: region.hexColor }}
             >
               {region.sentiment}
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-[9px] text-gray-500 mb-0.5 font-medium">Rank</div>
-            <div className="text-base font-bold text-gray-900">
+          <div className="text-center min-w-0">
+            <div className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Rank</div>
+            <div className="text-sm sm:text-base font-bold text-gray-900 truncate">
               {region.llmRanking}
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-[9px] text-gray-500 mb-0.5 font-medium">Mentions</div>
-            <div className="text-base font-bold text-gray-900">
+          <div className="text-center min-w-0">
+            <div className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Mentions</div>
+            <div className="text-sm sm:text-base font-bold text-gray-900 truncate">
               {region.aiMentions}
             </div>
           </div>
         </div>
 
-        {/* Expanded Details - Only shown when selected */}
+        {/* Expanded Details - Only shown when selected - Mobile optimized */}
         <AnimatePresence>
           {isExpanded && (
             <motion.div
@@ -93,33 +93,33 @@ function FlatRegionCard({ region, isSelected, isExpanded, onClick }: FlatRegionC
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="space-y-3 pt-3 border-t border-gray-100">
+              <div className="space-y-2 sm:space-y-3 pt-2 sm:pt-3 border-t border-gray-100">
                 {/* Insights */}
                 {region.insights && (
                   <div>
-                    <div className="text-[9px] text-gray-500 mb-1 font-medium uppercase tracking-wider">
+                    <div className="text-[8px] sm:text-[9px] text-gray-500 mb-1 font-medium uppercase tracking-wider">
                       Insights
                     </div>
-                    <p className="text-xs text-gray-600 leading-relaxed">
+                    <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
                       {region.insights}
                     </p>
                   </div>
                 )}
 
-                {/* Competitors */}
+                {/* Competitors - Limited on mobile */}
                 {region.competitors && region.competitors.length > 0 && (
                   <div>
-                    <div className="text-[9px] text-gray-500 mb-1.5 font-medium uppercase tracking-wider">
+                    <div className="text-[8px] sm:text-[9px] text-gray-500 mb-1 sm:mb-1.5 font-medium uppercase tracking-wider">
                       Competitors
                     </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {region.competitors.map((comp, idx) => (
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                      {region.competitors.slice(0, 4).map((comp, idx) => (
                         <motion.span
                           key={idx}
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: idx * 0.03 }}
-                          className="px-2 py-0.5 bg-gray-50 border border-gray-200 rounded text-[10px] font-medium text-gray-700"
+                          className="px-1.5 py-0.5 sm:px-2 sm:py-0.5 bg-gray-50 border border-gray-200 rounded text-[9px] sm:text-[10px] font-medium text-gray-700"
                         >
                           {comp}
                         </motion.span>
@@ -144,14 +144,15 @@ interface FlatRegionMetricsProps {
 
 export function FlatRegionMetrics({ regions, selectedRegionId, onRegionClick }: FlatRegionMetricsProps) {
   return (
-    <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 z-40 pointer-events-none px-1 sm:px-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-1.5 sm:gap-2 md:gap-3 pointer-events-auto max-h-[50vh] sm:max-h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+    <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 md:bottom-4 md:left-4 md:right-4 z-40 pointer-events-none">
+      {/* Mobile-First Grid: Stack on mobile, columns on larger screens */}
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1.5 sm:gap-2 md:gap-2.5 pointer-events-auto max-h-[45vh] xs:max-h-[50vh] sm:max-h-[55vh] md:max-h-[60vh] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
         {regions.map((region, index) => (
           <motion.div
             key={region.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05 }}
+            transition={{ delay: index * 0.04 }}
             layout
           >
             <FlatRegionCard

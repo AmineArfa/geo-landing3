@@ -49,7 +49,7 @@ export function ExitIntent({ onCTAClick, onClose }: ExitIntentProps) {
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+        className="fixed inset-0 z-[60] flex items-center justify-center p-3 xs:p-4 sm:p-6"
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             setShow(false);
@@ -68,20 +68,21 @@ export function ExitIntent({ onCTAClick, onClose }: ExitIntentProps) {
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         />
 
-        {/* Modal */}
+        {/* Modal - Mobile-first optimized */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative bg-white rounded-lg shadow-lg max-w-md w-full p-6 sm:p-8 text-center space-y-6 border border-gray-200 mx-4"
+          className="relative bg-white rounded-lg xs:rounded-xl shadow-lg max-w-md w-full p-5 xs:p-6 sm:p-8 text-center space-y-5 xs:space-y-6 border border-gray-200"
         >
+          {/* Close button - Touch-friendly */}
           <button
             onClick={() => {
               setShow(false);
               onClose();
             }}
-            className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors"
+            className="absolute top-3 right-3 xs:top-4 xs:right-4 min-h-touch min-w-touch p-2 flex items-center justify-center rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-colors"
             aria-label="Close"
           >
             <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,19 +90,20 @@ export function ExitIntent({ onCTAClick, onClose }: ExitIntentProps) {
             </svg>
           </button>
 
-          <div className="space-y-4">
-            <h2 id="exit-intent-title" className="text-xl sm:text-2xl font-medium text-gray-900">
+          <div className="space-y-3 xs:space-y-4 pr-8">
+            <h2 id="exit-intent-title" className="text-lg xs:text-xl sm:text-2xl font-medium text-gray-900">
               Wait! Get your full brand analysis
             </h2>
-            <p className="text-gray-600">
+            <p className="text-sm xs:text-base text-gray-600 px-2">
               Sign up to unlock detailed insights and competitor tracking
             </p>
           </div>
 
+          {/* Buttons - Full width on mobile, side-by-side on sm+ */}
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={handleCTAClick}
-              className="flex-1 px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-all"
+              className="flex-1 min-h-touch px-5 xs:px-6 py-3 bg-black text-white text-sm xs:text-base font-medium rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-all"
             >
               Continue to Sign Up
             </button>
@@ -110,13 +112,13 @@ export function ExitIntent({ onCTAClick, onClose }: ExitIntentProps) {
                 setShow(false);
                 onClose();
               }}
-              className="px-6 py-3 text-gray-600 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors"
+              className="min-h-touch px-5 xs:px-6 py-3 text-gray-600 text-sm xs:text-base font-medium rounded-lg border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors"
             >
               Maybe Later
             </button>
           </div>
 
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-400 px-2">
             Just want the report? Enter your email to get notified when it's ready.
           </p>
         </motion.div>
@@ -124,4 +126,3 @@ export function ExitIntent({ onCTAClick, onClose }: ExitIntentProps) {
     </AnimatePresence>
   );
 }
-

@@ -9,7 +9,7 @@ export function DashboardPreview() {
   ];
 
   return (
-    <section id="dashboard" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+    <section id="dashboard" className="py-16 xs:py-20 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl" />
@@ -17,58 +17,59 @@ export function DashboardPreview() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header - Mobile-first typography */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-12 xs:mb-16 sm:mb-20 md:mb-24"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-6">
             <span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-accent-700">Dashboard</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 sm:mb-8 px-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 xs:mb-6 sm:mb-8 px-4">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               Your LLM visibility dashboard
             </span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
             Monitor your brand's presence across ChatGPT, Gemini, Claude, and all major AI assistants in one unified dashboard
           </p>
         </motion.div>
 
-        {/* Dashboard Mockup */}
+        {/* Dashboard Mockup - Mobile-first */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl border border-gray-200 shadow-2xl overflow-hidden"
+          className="bg-white rounded-xl xs:rounded-2xl sm:rounded-3xl border border-gray-200 shadow-2xl overflow-hidden"
         >
-          {/* Dashboard Header */}
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-4 sm:p-6 border-b border-gray-700">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          {/* Dashboard Header - Mobile responsive */}
+          <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-3 xs:p-4 sm:p-6 border-b border-gray-700">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xs:gap-4">
               <div>
-                <h3 className="text-white font-bold text-lg sm:text-xl mb-1">LLM Visibility Dashboard</h3>
+                <h3 className="text-white font-bold text-base xs:text-lg sm:text-xl mb-1">LLM Visibility Dashboard</h3>
                 <p className="text-gray-400 text-xs sm:text-sm">Last updated: 2 minutes ago</p>
               </div>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                <select className="px-3 sm:px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-xs sm:text-sm focus:outline-none">
+              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 sm:gap-3 w-full sm:w-auto">
+                <select className="min-h-touch px-3 xs:px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-xs sm:text-sm focus:outline-none">
                   <option>All LLM Platforms</option>
                   <option>ChatGPT</option>
                   <option>Gemini</option>
                   <option>Claude</option>
                 </select>
-                <button className="px-3 sm:px-4 py-2 bg-accent-500 text-white rounded-lg text-xs sm:text-sm font-semibold hover:bg-accent-600 transition-colors">
+                <button className="min-h-touch px-3 xs:px-4 py-2 bg-accent-500 text-white rounded-lg text-xs sm:text-sm font-semibold hover:bg-accent-600 transition-colors">
                   Export Report
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Metrics Grid */}
-          <div className="p-4 sm:p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 border-b border-gray-200">
+          {/* Metrics Grid - Mobile-first grid */}
+          <div className="p-3 xs:p-4 sm:p-6 md:p-8 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 border-b border-gray-200">
             {metrics.map((metric, index) => (
               <motion.div
                 key={metric.label}
@@ -76,10 +77,10 @@ export function DashboardPreview() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-4 sm:p-6 rounded-lg sm:rounded-xl bg-gray-50 border border-gray-200"
+                className="p-4 xs:p-5 sm:p-6 rounded-lg xs:rounded-xl bg-gray-50 border border-gray-200"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-600">{metric.label}</span>
+                  <span className="text-xs xs:text-sm text-gray-600">{metric.label}</span>
                   <div className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold ${
                     metric.trend === 'up' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
                   }`}>
@@ -87,16 +88,16 @@ export function DashboardPreview() {
                     {metric.change}
                   </div>
                 </div>
-                <div className="text-2xl sm:text-3xl font-bold text-gray-900">{metric.value}</div>
+                <div className="text-xl xs:text-2xl sm:text-3xl font-bold text-gray-900">{metric.value}</div>
               </motion.div>
             ))}
           </div>
 
-          {/* Charts & Visualizations - Simplified on mobile */}
+          {/* Charts & Visualizations - Hidden on mobile, simplified on tablet, full on desktop */}
           <div className="hidden md:block p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* LLM Ranking Trend */}
             <div className="space-y-4">
-              <h4 className="font-bold text-gray-900">LLM Ranking Trend (Last 30 Days)</h4>
+              <h4 className="font-bold text-gray-900 text-base sm:text-lg">LLM Ranking Trend (Last 30 Days)</h4>
               <div className="h-32 sm:h-40 md:h-48 bg-gradient-to-t from-accent-50 to-transparent rounded-lg sm:rounded-xl border border-gray-200 flex items-end justify-around p-3 sm:p-4">
                 {[...Array(30)].map((_, i) => (
                   <div
@@ -110,7 +111,7 @@ export function DashboardPreview() {
 
             {/* LLM Platform Distribution */}
             <div className="space-y-4">
-              <h4 className="font-bold text-gray-900">Ranking by LLM Platform</h4>
+              <h4 className="font-bold text-gray-900 text-base sm:text-lg">Ranking by LLM Platform</h4>
               <div className="space-y-3">
                 {[
                   { platform: 'ChatGPT', ranking: '#2', mentions: '4.2K', color: 'bg-green-500' },
@@ -138,18 +139,18 @@ export function DashboardPreview() {
             </div>
           </div>
 
-          {/* Competitor Comparison - Simplified on mobile */}
-          <div className="p-4 sm:p-6 md:p-8 bg-gray-50 border-t border-gray-200">
-            <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-base sm:text-lg">Competitive Positioning</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+          {/* Competitor Comparison - Mobile-first responsive */}
+          <div className="p-3 xs:p-4 sm:p-6 md:p-8 bg-gray-50 border-t border-gray-200">
+            <h4 className="font-bold text-gray-900 mb-3 sm:mb-4 text-sm xs:text-base sm:text-lg">Competitive Positioning</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4">
               {[
                 { name: 'Your Brand', score: 8.2, position: 'Leader' },
                 { name: 'Competitor A', score: 7.5, position: 'Challenger' },
                 { name: 'Competitor B', score: 6.8, position: 'Follower' },
               ].map((competitor) => (
-                <div key={competitor.name} className="p-3 sm:p-4 bg-white rounded-lg sm:rounded-xl border border-gray-200">
+                <div key={competitor.name} className="p-3 xs:p-4 bg-white rounded-lg xs:rounded-xl border border-gray-200">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-gray-900 text-sm">{competitor.name}</span>
+                    <span className="font-semibold text-gray-900 text-xs xs:text-sm">{competitor.name}</span>
                     <span className="text-xs px-2 py-1 rounded bg-accent-50 text-accent-700 font-semibold">
                       {competitor.position}
                     </span>
@@ -169,8 +170,8 @@ export function DashboardPreview() {
           </div>
         </motion.div>
 
-        {/* Features List */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        {/* Features List - Mobile-first grid */}
+        <div className="mt-6 xs:mt-8 sm:mt-12 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-6">
             {[
               'Real-time LLM monitoring',
               'Customizable widgets',
@@ -185,12 +186,12 @@ export function DashboardPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-200"
+              className="flex items-center gap-2 xs:gap-3 p-3 xs:p-4 rounded-lg xs:rounded-xl bg-white border border-gray-200"
             >
-              <svg className="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 xs:w-5 xs:h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-gray-700">{feature}</span>
+              <span className="text-gray-700 text-xs xs:text-sm sm:text-base">{feature}</span>
             </motion.div>
           ))}
         </div>
@@ -198,4 +199,3 @@ export function DashboardPreview() {
     </section>
   );
 }
-
