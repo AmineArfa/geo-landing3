@@ -256,6 +256,10 @@ export function Features() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const heroSection = document.querySelector('section');
+                heroSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-accent-500/50 transition-all"
             >
               Get Started Free

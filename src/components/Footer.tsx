@@ -1,12 +1,39 @@
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const productLinks = [
+    { name: 'Features', href: '#features' },
+    { name: 'Pricing', href: '#' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'API', href: '#dashboard' },
+  ];
+
+  const companyLinks = [
+    { name: 'About', href: '#how-it-works' },
+    { name: 'Blog', href: '#' },
+    { name: 'Careers', href: '#' },
+    { name: 'Contact', href: 'mailto:contact@llm-visibility.ai' },
+  ];
+
+  const legalLinks = [
+    { name: 'Privacy', href: '#' },
+    { name: 'Terms', href: '#' },
+    { name: 'Security', href: '#' },
+    { name: 'Compliance', href: '#' },
+  ];
+
+  const socialLinks = [
+    { name: 'Twitter', href: 'https://twitter.com' },
+    { name: 'LinkedIn', href: 'https://linkedin.com' },
+    { name: 'GitHub', href: 'https://github.com' },
+  ];
+
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:14px_24px]" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
@@ -20,10 +47,20 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 sm:mb-6 text-base sm:text-lg">Product</h4>
             <ul className="space-y-3 text-sm">
-              {['Features', 'Pricing', 'FAQ', 'API'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform">
-                    {link}
+              {productLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                    onClick={(e) => {
+                      if (link.href.startsWith('#') && link.href !== '#') {
+                        e.preventDefault();
+                        const element = document.querySelector(link.href);
+                        element?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -34,10 +71,20 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 sm:mb-6 text-base sm:text-lg">Company</h4>
             <ul className="space-y-3 text-sm">
-              {['About', 'Blog', 'Careers', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform">
-                    {link}
+              {companyLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                    onClick={(e) => {
+                      if (link.href.startsWith('#') && link.href !== '#') {
+                        e.preventDefault();
+                        const element = document.querySelector(link.href);
+                        element?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -48,10 +95,13 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 sm:mb-6 text-base sm:text-lg">Legal</h4>
             <ul className="space-y-3 text-sm">
-              {['Privacy', 'Terms', 'Security', 'Compliance'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform">
-                    {link}
+              {legalLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                  >
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -65,13 +115,15 @@ export function Footer() {
               &copy; {currentYear} LLM Visibility Platform. All rights reserved.
             </p>
             <div className="flex gap-6">
-              {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
-                  {social}
+                  {social.name}
                 </a>
               ))}
             </div>

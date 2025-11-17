@@ -5,8 +5,10 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { href: '#how-it-works', label: 'How It Works' },
     { href: '#features', label: 'Features' },
     { href: '#benefits', label: 'Benefits' },
+    { href: '#use-cases', label: 'Use Cases' },
     { href: '#testimonials', label: 'Testimonials' },
     { href: '#faq', label: 'FAQ' },
   ];
@@ -61,6 +63,10 @@ export function Navigation() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => {
+                const heroSection = document.querySelector('section');
+                heroSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-4 py-1.5 sm:px-5 sm:py-2 bg-black/90 hover:bg-black text-white text-xs sm:text-sm font-medium rounded-lg shadow-lg shadow-black/10 transition-all duration-200"
               style={{ letterSpacing: '0.02em', fontWeight: 500 }}
             >

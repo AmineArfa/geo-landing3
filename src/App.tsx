@@ -100,7 +100,9 @@ function App() {
 
   const handleCTAClick = () => {
     // In a real app, this would redirect to signup/waitlist
-    window.location.href = '#signup';
+    // For now, scroll to hero section to encourage another analysis
+    const heroSection = document.querySelector('section');
+    heroSection?.scrollIntoView({ behavior: 'smooth' });
     setShowModal(false);
     setShowExitIntent(false);
   };
