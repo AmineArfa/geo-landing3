@@ -74,93 +74,93 @@ const guarantees = [
 
 export function TrustBadges() {
   return (
-    <section className="py-12 xs:py-14 sm:py-16 md:py-20 lg:py-24 px-4 xs:px-5 sm:px-6 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] xs:w-[500px] sm:w-[600px] h-[400px] xs:h-[500px] sm:h-[600px] bg-accent-500/5 rounded-full blur-3xl" />
+    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+      {/* Background decoration - Hidden on mobile */}
+      <div className="hidden sm:block absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Security Badges */}
+        {/* Security Badges - Compact */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 xs:mb-12 sm:mb-16 md:mb-20"
+          transition={{ duration: 0.5 }}
+          className="mb-8 sm:mb-12"
         >
-          <div className="text-center mb-8 xs:mb-10 sm:mb-12">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-2 xs:mb-3 sm:mb-4">
+          <div className="text-center mb-5 sm:mb-8">
+            <h2 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight mb-1.5 sm:mb-3">
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                 Security & Trust
               </span>
             </h2>
-            <p className="text-sm xs:text-base text-gray-600 max-w-2xl mx-auto px-2 xs:px-4">
-              Your data security and privacy are our top priorities
+            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-2">
+              Your data security is our priority
             </p>
           </div>
 
-          {/* Mobile-first badge grid: 2 cols -> 3 cols (xs) -> 4 cols (sm) -> 6 cols (md) */}
-          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 xs:gap-4 sm:gap-5 md:gap-6">
+          {/* Compact badge grid */}
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3">
             {badges.map((badge, index) => (
               <motion.div
                 key={badge.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="min-h-[44px] text-center p-3 xs:p-4 sm:p-5 md:p-6 rounded-lg xs:rounded-xl bg-white border border-gray-200/50 shadow-lg hover:shadow-xl transition-all"
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="text-center p-2 sm:p-3 rounded-lg bg-white border border-gray-200/50 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="inline-flex p-2 xs:p-2.5 sm:p-3 rounded-xl bg-accent-50 text-accent-600 mb-2 xs:mb-3 sm:mb-4">
+                <div className="inline-flex p-1.5 sm:p-2 rounded-lg bg-accent-50 text-accent-600 mb-1.5 sm:mb-2">
                   {badge.icon}
                 </div>
-                <h3 className="text-xs xs:text-sm sm:text-base font-bold text-gray-900 mb-1">{badge.title}</h3>
-                <p className="text-xs text-gray-600 leading-tight">{badge.description}</p>
+                <h3 className="text-[10px] sm:text-xs font-bold text-gray-900 mb-0.5">{badge.title}</h3>
+                <p className="text-[9px] sm:text-xs text-gray-600 leading-tight">{badge.description}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Guarantees */}
+        {/* Guarantees - Compact */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl xs:rounded-2xl p-5 xs:p-6 sm:p-8 md:p-10 lg:p-12 text-white relative overflow-hidden"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-gradient-to-r from-accent-500 to-accent-600 rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 text-white relative overflow-hidden"
         >
-          {/* Background decoration */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-48 xs:w-56 sm:w-64 h-48 xs:h-56 sm:h-64 bg-white rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 xs:w-56 sm:w-64 h-48 xs:h-56 sm:h-64 bg-white rounded-full blur-3xl" />
+          {/* Background decoration - Hidden on mobile */}
+          <div className="hidden sm:block absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-white rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-3xl" />
           </div>
 
           <div className="relative z-10">
-            <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12">
-              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-2 xs:mb-3 sm:mb-4">Our Guarantee</h2>
-              <p className="text-sm xs:text-base sm:text-lg text-accent-100 max-w-2xl mx-auto px-2 xs:px-4">
-                We stand behind our platform with these commitments
+            <div className="text-center mb-5 sm:mb-8">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold mb-1.5 sm:mb-3">Our Guarantee</h2>
+              <p className="text-xs sm:text-sm text-accent-100 max-w-2xl mx-auto px-2">
+                We stand behind our platform
               </p>
             </div>
 
-            {/* Mobile-first: stack on mobile, row on sm+ */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 xs:gap-6 sm:gap-7 md:gap-8">
+            {/* Compact grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
               {guarantees.map((guarantee, index) => (
                 <motion.div
                   key={guarantee.title}
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="min-h-[44px] text-center"
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                  className="text-center"
                 >
-                  <div className="inline-flex p-2.5 xs:p-3 rounded-xl bg-white/20 backdrop-blur-sm mb-3 xs:mb-4">
-                    <svg className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="inline-flex p-2 rounded-lg bg-white/20 backdrop-blur-sm mb-2">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <h3 className="text-base xs:text-lg sm:text-xl font-bold mb-1.5 xs:mb-2">{guarantee.title}</h3>
-                  <p className="text-sm xs:text-base text-accent-100">{guarantee.description}</p>
+                  <h3 className="text-sm sm:text-base font-bold mb-1">{guarantee.title}</h3>
+                  <p className="text-xs sm:text-sm text-accent-100">{guarantee.description}</p>
                 </motion.div>
               ))}
             </div>

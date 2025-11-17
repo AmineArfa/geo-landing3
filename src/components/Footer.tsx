@@ -3,29 +3,29 @@ export function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:14px_24px]" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
+      {/* Background decoration - simplified */}
+      <div className="hidden sm:block absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:14px_24px]" />
+      <div className="hidden sm:block absolute top-0 left-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 py-10 xs:py-12 sm:py-16 relative z-10">
-        {/* Mobile-first grid: 1 column, then 2 at xs (480px), then 4 at md */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-8 xs:gap-9 sm:gap-10 md:gap-12 mb-8 xs:mb-9 sm:mb-10 md:mb-12">
-          {/* Brand */}
-          <div className="space-y-3 xs:space-y-4 xs:col-span-2 md:col-span-1">
-            <p className="text-sm xs:text-sm text-gray-400 leading-relaxed">
-              Understand how your brand is perceived across regions with geographic brand intelligence. Track competitors, monitor sentiment, and make data-driven decisions across 200+ markets.
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12 relative z-10">
+        {/* Simplified grid on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mb-6 sm:mb-8">
+          {/* Brand - Hidden on mobile for cleaner look */}
+          <div className="hidden md:block space-y-3">
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+              Understand how your brand is perceived across regions. Track competitors and monitor sentiment.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="text-white font-bold mb-4 xs:mb-5 sm:mb-6 text-base xs:text-base sm:text-lg">Product</h4>
-            <ul className="space-y-2.5 xs:space-y-3 text-sm xs:text-sm">
+            <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
+            <ul className="space-y-2 text-xs sm:text-sm">
               {['Features', 'Pricing', 'FAQ', 'API'].map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform min-h-[44px] flex items-center"
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
                   >
                     {link}
                   </a>
@@ -36,13 +36,13 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-white font-bold mb-4 xs:mb-5 sm:mb-6 text-base xs:text-base sm:text-lg">Company</h4>
-            <ul className="space-y-2.5 xs:space-y-3 text-sm xs:text-sm">
+            <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Company</h4>
+            <ul className="space-y-2 text-xs sm:text-sm">
               {['About', 'Blog', 'Careers', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform min-h-[44px] flex items-center"
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
                   >
                     {link}
                   </a>
@@ -53,13 +53,13 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-bold mb-4 xs:mb-5 sm:mb-6 text-base xs:text-base sm:text-lg">Legal</h4>
-            <ul className="space-y-2.5 xs:space-y-3 text-sm xs:text-sm">
+            <h4 className="text-white font-bold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h4>
+            <ul className="space-y-2 text-xs sm:text-sm">
               {['Privacy', 'Terms', 'Security', 'Compliance'].map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform min-h-[44px] flex items-center"
+                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
                   >
                     {link}
                   </a>
@@ -69,17 +69,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 xs:pt-7 sm:pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 xs:gap-5">
-            <p className="text-xs xs:text-sm text-gray-400 text-center md:text-left">
+        <div className="pt-4 sm:pt-6 border-t border-gray-800">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-xs text-gray-400 text-center sm:text-left">
               &copy; {currentYear} LLM Visibility Platform. All rights reserved.
             </p>
-            <div className="flex gap-5 xs:gap-6">
+            <div className="flex gap-4 sm:gap-5">
               {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
                 <a
                   key={social}
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors text-sm xs:text-sm min-h-[44px] flex items-center"
+                  className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                 >
                   {social}
                 </a>

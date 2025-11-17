@@ -18,76 +18,76 @@ export function LLMVisibility() {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
 
   return (
-    <section id="llm-visibility" className="py-12 xs:py-16 sm:py-20 md:py-24 lg:py-32 px-4 xs:px-5 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <section id="llm-visibility" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
+      {/* Background decoration - Hidden on mobile */}
+      <div className="hidden md:block absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+        {/* Header - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-10 xs:mb-12 sm:mb-16 md:mb-20"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-6 sm:mb-10 md:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 xs:px-4 py-1.5 xs:py-2 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-4 xs:mb-5 sm:mb-6">
-            <span className="w-2 h-2 bg-accent-500 rounded-full animate-pulse" />
-            <span className="text-xs xs:text-sm font-semibold text-accent-700">LLM Visibility</span>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-accent-50 to-purple-50 border border-accent-200/50 mb-3 sm:mb-4">
+            <span className="w-1.5 h-1.5 bg-accent-500 rounded-full animate-pulse" />
+            <span className="text-xs font-semibold text-accent-700">LLM Visibility</span>
           </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-4 xs:mb-5 sm:mb-6 md:mb-8 px-2 xs:px-4">
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2 sm:mb-4 px-2">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               Track your AI response rankings
             </span>
           </h2>
-          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light px-2 xs:px-4">
-            Monitor your brand's visibility across ChatGPT, Gemini, Claude, and all major AI assistants. Track rankings, analyze responses, and optimize your presence.
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
+            Monitor your brand across ChatGPT, Gemini, Claude, and more
           </p>
         </motion.div>
 
-        {/* LLM Platform Rankings */}
+        {/* LLM Platform Rankings - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-10 xs:mb-12 sm:mb-16 md:mb-20"
+          transition={{ duration: 0.6 }}
+          className="mb-6 sm:mb-10"
         >
-          <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 mb-5 xs:mb-6 sm:mb-8 text-center px-2 xs:px-4">Your Ranking Across LLM Platforms</h3>
-          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-6">
+          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 sm:mb-6 text-center px-2">Your LLM Rankings</h3>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {llmPlatforms.map((platform, index) => (
               <motion.div
                 key={platform.name}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
                 onClick={() => setSelectedPlatform(platform.name)}
-                className={`relative p-4 xs:p-5 sm:p-6 bg-white rounded-xl xs:rounded-xl sm:rounded-2xl border-2 cursor-pointer transition-all min-h-[140px] xs:min-h-[150px] ${
+                className={`relative p-3 sm:p-4 bg-white rounded-lg border-2 cursor-pointer transition-all min-h-[110px] sm:min-h-[130px] ${
                   selectedPlatform === platform.name
-                    ? 'border-accent-500 shadow-xl'
-                    : 'border-gray-200 hover:border-gray-300 shadow-lg'
+                    ? 'border-accent-500 shadow-lg'
+                    : 'border-gray-200 hover:border-gray-300 shadow-sm'
                 }`}
               >
-                <div className={`absolute top-0 right-0 w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${platform.color} rounded-bl-xl xs:rounded-bl-xl sm:rounded-bl-2xl flex items-center justify-center text-xl xs:text-2xl sm:text-3xl opacity-20`}>
+                <div className={`absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${platform.color} rounded-bl-lg flex items-center justify-center text-base sm:text-xl opacity-20`}>
                   {platform.icon}
                 </div>
                 <div className="relative z-10">
-                  <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-3 mb-3 xs:mb-3.5 sm:mb-4">
-                    <div className={`w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 rounded-lg xs:rounded-lg sm:rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center text-xl xs:text-xl sm:text-2xl shadow-lg`}>
+                  <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br ${platform.color} flex items-center justify-center text-base sm:text-xl shadow-md`}>
                       {platform.icon}
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-sm xs:text-base">{platform.name}</h4>
-                      <p className="text-xs xs:text-sm text-gray-500">Average Rank</p>
+                      <h4 className="font-bold text-gray-900 text-xs sm:text-sm">{platform.name}</h4>
+                      <p className="text-[10px] sm:text-xs text-gray-500">Avg Rank</p>
                     </div>
                   </div>
-                  <div className="flex items-end gap-2">
-                    <span className="text-3xl xs:text-3xl sm:text-4xl font-bold text-gray-900">#{platform.rank}</span>
-                    <span className="text-green-600 font-semibold text-xs xs:text-xs sm:text-sm mb-1">{platform.change}</span>
+                  <div className="flex items-end gap-1.5">
+                    <span className="text-xl sm:text-3xl font-bold text-gray-900">#{platform.rank}</span>
+                    <span className="text-green-600 font-semibold text-[10px] sm:text-xs mb-0.5">{platform.change}</span>
                   </div>
                 </div>
               </motion.div>
@@ -185,36 +185,36 @@ export function LLMVisibility() {
           </div>
         </motion.div>
 
-        {/* Key Features */}
-        <div className="grid grid-cols-1 xs:grid-cols-1 md:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
+        {/* Key Features - Compact */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           {[
             {
               title: 'Real-time Monitoring',
-              description: 'Track how your brand appears in AI responses as they change. Get alerts when your ranking shifts or new mentions appear.',
+              description: 'Track your brand in AI responses. Get alerts when rankings shift.',
               icon: '⚡',
             },
             {
               title: 'Optimization Insights',
-              description: 'Get actionable recommendations to improve your LLM ranking. Understand what content and signals influence AI responses.',
+              description: 'Get recommendations to improve your LLM ranking.',
               icon: '📈',
             },
             {
               title: 'Competitive Analysis',
-              description: 'Compare your LLM presence against competitors. See where they rank higher and identify opportunities to outperform.',
+              description: 'Compare your presence against competitors.',
               icon: '🎯',
             },
           ].map((feature, index) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="p-4 xs:p-5 sm:p-6 bg-white rounded-lg xs:rounded-xl sm:rounded-xl border border-gray-200 shadow-lg"
+              transition={{ delay: index * 0.05 }}
+              className="p-3 sm:p-4 bg-white rounded-lg border border-gray-200 shadow-sm"
             >
-              <div className="text-3xl xs:text-3xl sm:text-4xl mb-2.5 xs:mb-3 sm:mb-4">{feature.icon}</div>
-              <h4 className="text-base xs:text-lg sm:text-xl font-bold text-gray-900 mb-1.5 xs:mb-2">{feature.title}</h4>
-              <p className="text-sm xs:text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
+              <div className="text-2xl sm:text-3xl mb-2">{feature.icon}</div>
+              <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-1">{feature.title}</h4>
+              <p className="text-xs sm:text-sm text-gray-600 leading-snug">{feature.description}</p>
             </motion.div>
           ))}
         </div>
