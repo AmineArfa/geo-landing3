@@ -3,7 +3,7 @@ export function Footer() {
 
   const productLinks = [
     { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
     { name: 'API', href: '#dashboard' },
   ];
@@ -16,10 +16,10 @@ export function Footer() {
   ];
 
   const legalLinks = [
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-    { name: 'Security', href: '#' },
-    { name: 'Compliance', href: '#' },
+    { name: 'Privacy', href: '#privacy' },
+    { name: 'Terms', href: '#terms' },
+    { name: 'Security', href: '#security' },
+    { name: 'Compliance', href: '#compliance' },
   ];
 
   const socialLinks = [
@@ -100,6 +100,13 @@ export function Footer() {
                   <a
                     href={link.href}
                     className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                    onClick={(e) => {
+                      if (link.href.startsWith('#') && link.href !== '#') {
+                        e.preventDefault();
+                        const element = document.querySelector(link.href);
+                        element?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                   >
                     {link.name}
                   </a>
