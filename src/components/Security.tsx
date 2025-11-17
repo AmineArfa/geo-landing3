@@ -121,7 +121,7 @@ export function Security() {
           viewport={{ once: true }}
           className="mb-16 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {certifications.map((cert, index) => (
+          {certifications.map((cert) => (
             <div
               key={cert.name}
               className="p-4 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-200 text-center"
