@@ -17,6 +17,11 @@ import { DashboardPreview } from './components/DashboardPreview';
 import { TrustBadges } from './components/TrustBadges';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
+import { Pricing } from './components/Pricing';
+import { Privacy } from './components/Privacy';
+import { Terms } from './components/Terms';
+import { Security } from './components/Security';
+import { Compliance } from './components/Compliance';
 import { Footer } from './components/Footer';
 import { ExitIntent } from './components/ExitIntent';
 import { FloatingCTA } from './components/FloatingCTA';
@@ -100,7 +105,9 @@ function App() {
 
   const handleCTAClick = () => {
     // In a real app, this would redirect to signup/waitlist
-    window.location.href = '#signup';
+    // For now, scroll to hero section to encourage another analysis
+    const heroSection = document.querySelector('section');
+    heroSection?.scrollIntoView({ behavior: 'smooth' });
     setShowModal(false);
     setShowExitIntent(false);
   };
@@ -149,8 +156,23 @@ function App() {
       {/* FAQ */}
       <FAQ />
 
+      {/* Pricing */}
+      <Pricing />
+
       {/* Social Proof Below */}
       <SocialProof variant="below-modal" />
+
+      {/* Privacy */}
+      <Privacy />
+
+      {/* Terms */}
+      <Terms />
+
+      {/* Security */}
+      <Security />
+
+      {/* Compliance */}
+      <Compliance />
 
       {/* Footer */}
       <Footer />

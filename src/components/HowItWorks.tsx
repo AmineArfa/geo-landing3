@@ -124,15 +124,18 @@ export function HowItWorks() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center mt-16"
         >
-          <a
-            href="#"
+          <button
+            onClick={() => {
+              const heroSection = document.querySelector('section');
+              heroSection?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-accent-500/50 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 transition-all"
           >
             Try It Free Now
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

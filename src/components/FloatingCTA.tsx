@@ -20,7 +20,8 @@ export function FloatingCTA() {
 
   const handleClick = () => {
     trackEvent('cta_clicked', { source: 'floating_cta' });
-    window.location.href = '#';
+    const heroSection = document.querySelector('section');
+    heroSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   if (!show) return null;
