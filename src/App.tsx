@@ -1,30 +1,21 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Navigation } from './components/Navigation';
-import { Hero } from './components/Hero';
 import { LoadingState } from './components/LoadingState';
 import { CredentialsCTA } from './components/CredentialsCTA';
 import { ResultsModal } from './components/ResultsModal';
-import { SocialProof } from './components/SocialProof';
-import { HowItWorks } from './components/HowItWorks';
-import { Features } from './components/Features';
-import { Benefits } from './components/Benefits';
-import { LLMVisibility } from './components/LLMVisibility';
-import { GeographicAnalysis } from './components/GeographicAnalysis';
-import { UseCases } from './components/UseCases';
-import { Comparison } from './components/Comparison';
-import { DashboardPreview } from './components/DashboardPreview';
-import { TrustBadges } from './components/TrustBadges';
-import { Testimonials } from './components/Testimonials';
-import { FAQ } from './components/FAQ';
-import { Pricing } from './components/Pricing';
-import { Privacy } from './components/Privacy';
-import { Terms } from './components/Terms';
-import { Security } from './components/Security';
-import { Compliance } from './components/Compliance';
 import { Footer } from './components/Footer';
 import { ExitIntent } from './components/ExitIntent';
 import { FloatingCTA } from './components/FloatingCTA';
+import { HomePage } from './pages/HomePage';
+import { FeaturesPage } from './pages/FeaturesPage';
+import { PricingPage } from './pages/PricingPage';
+import { UseCasesPage } from './pages/UseCasesPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { SecurityPage } from './pages/SecurityPage';
+import { CompliancePage } from './pages/CompliancePage';
 import { analyzeDomain } from './lib/api';
 import { trackPageView } from './lib/analytics';
 import type { AnalysisResponse } from './types/analysis';
@@ -32,11 +23,22 @@ import { extractDomain } from './lib/favicon';
 
 type FlowState = 'idle' | 'loading' | 'credentials' | 'results';
 
-function App() {
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function AppContent() {
   const [flowState, setFlowState] = useState<FlowState>('idle');
   const [results, setResults] = useState<AnalysisResponse | null>(null);
   const [url, setUrl] = useState('');
-  const [_email, setEmail] = useState(''); // Stored for future backend integration
+  const [_email, setEmail] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showExitIntent, setShowExitIntent] = useState(false);
@@ -59,10 +61,9 @@ function App() {
   const handleCredentialsSubmit = async (submittedEmail: string) => {
     setEmail(submittedEmail);
     setFlowState('results');
-    
-    // Extract domain from URL for API call
+
     const domain = extractDomain(url);
-    
+
     try {
       const analysis = await analyzeDomain(domain);
       setResults(analysis);
@@ -75,10 +76,9 @@ function App() {
 
   const handleCredentialsSkip = async () => {
     setFlowState('results');
-    
-    // Extract domain from URL for API call
+
     const domain = extractDomain(url);
-    
+
     try {
       const analysis = await analyzeDomain(domain);
       setResults(analysis);
@@ -104,75 +104,29 @@ function App() {
   };
 
   const handleCTAClick = () => {
-    // In a real app, this would redirect to signup/waitlist
-    // For now, scroll to hero section to encourage another analysis
-    const heroSection = document.querySelector('section');
-    heroSection?.scrollIntoView({ behavior: 'smooth' });
+    window.location.href = '/';
     setShowModal(false);
     setShowExitIntent(false);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <ScrollToTop />
+
       {/* Navigation */}
       <Navigation />
 
-      {/* Hero Section */}
-      <Hero onAnalyze={handleAnalyze} isLoading={flowState === 'loading'} />
-
-      {/* Social Proof - Above Fold */}
-      <SocialProof variant="above-fold" />
-
-      {/* How It Works */}
-      <HowItWorks />
-
-      {/* Dashboard Preview - Show the platform early */}
-      <DashboardPreview />
-
-      {/* Features */}
-      <Features />
-
-      {/* LLM Visibility */}
-      <LLMVisibility />
-
-      {/* Geographic Analysis */}
-      <GeographicAnalysis />
-
-      {/* Benefits */}
-      <Benefits />
-
-      {/* Use Cases */}
-      <UseCases />
-
-      {/* Comparison */}
-      <Comparison />
-
-      {/* Testimonials */}
-      <Testimonials />
-
-      {/* Trust Badges */}
-      <TrustBadges />
-
-      {/* FAQ */}
-      <FAQ />
-
-      {/* Pricing */}
-      <Pricing />
-
-      {/* Social Proof Below */}
-      <SocialProof variant="below-modal" />
-
-      {/* Privacy */}
-      <Privacy />
-
-      {/* Terms */}
-      <Terms />
-
-      {/* Security */}
-      <Security />
-
-      {/* Compliance */}
-      <Compliance />
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<HomePage onAnalyze={handleAnalyze} isLoading={flowState === 'loading'} />} />
+        <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/use-cases" element={<UseCasesPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/security" element={<SecurityPage />} />
+        <Route path="/compliance" element={<CompliancePage />} />
+      </Routes>
 
       {/* Footer */}
       <Footer />
@@ -237,6 +191,14 @@ function App() {
         </motion.div>
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

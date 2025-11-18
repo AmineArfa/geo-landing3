@@ -1,25 +1,19 @@
+import { Link } from 'react-router-dom';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const productLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'API', href: '#dashboard' },
-  ];
-
-  const companyLinks = [
-    { name: 'About', href: '#how-it-works' },
-    { name: 'Use Cases', href: '#use-cases' },
-    { name: 'Dashboard', href: '#dashboard' },
-    { name: 'Contact', href: 'mailto:contact@llm-visibility.ai' },
+    { name: 'Features', href: '/features' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Use Cases', href: '/use-cases' },
   ];
 
   const legalLinks = [
-    { name: 'Privacy', href: '#privacy' },
-    { name: 'Terms', href: '#terms' },
-    { name: 'Security', href: '#security' },
-    { name: 'Compliance', href: '#compliance' },
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms', href: '/terms' },
+    { name: 'Security', href: '/security' },
+    { name: 'Compliance', href: '/compliance' },
   ];
 
   const socialLinks = [
@@ -38,8 +32,18 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
+            <Link to="/" className="inline-block">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <span className="text-white font-bold">LLM Visibility</span>
+              </div>
+            </Link>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-              Understand how your brand is perceived across regions with geographic brand intelligence. Track competitors, monitor sentiment, and make data-driven decisions across 200+ markets.
+              Monitor and optimize how your brand appears in ChatGPT, Gemini, Claude, and other AI assistants. Track rankings, beat competitors, and dominate AI responses.
             </p>
           </div>
 
@@ -49,45 +53,45 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               {productLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
-                    onClick={(e) => {
-                      if (link.href.startsWith('#') && link.href !== '#') {
-                        e.preventDefault();
-                        const element = document.querySelector(link.href);
-                        element?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Contact */}
           <div>
-            <h4 className="text-white font-bold mb-4 sm:mb-6 text-base sm:text-lg">Company</h4>
+            <h4 className="text-white font-bold mb-4 sm:mb-6 text-base sm:text-lg">Contact</h4>
             <ul className="space-y-3 text-sm">
-              {companyLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
-                    onClick={(e) => {
-                      if (link.href.startsWith('#') && link.href !== '#') {
-                        e.preventDefault();
-                        const element = document.querySelector(link.href);
-                        element?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="mailto:contact@llm-visibility.ai"
+                  className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                >
+                  contact@llm-visibility.ai
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:sales@llm-visibility.ai"
+                  className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                >
+                  sales@llm-visibility.ai
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@llm-visibility.ai"
+                  className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
+                >
+                  support@llm-visibility.ai
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -97,19 +101,12 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               {legalLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="hover:text-white transition-colors text-gray-400 hover:translate-x-1 inline-block transition-transform"
-                    onClick={(e) => {
-                      if (link.href.startsWith('#') && link.href !== '#') {
-                        e.preventDefault();
-                        const element = document.querySelector(link.href);
-                        element?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -140,4 +137,3 @@ export function Footer() {
     </footer>
   );
 }
-
