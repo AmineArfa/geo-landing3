@@ -10,8 +10,8 @@ export function Footer() {
 
   const companyLinks = [
     { name: 'About', href: '#how-it-works' },
-    { name: 'Blog', href: '#' },
-    { name: 'Careers', href: '#' },
+    { name: 'Use Cases', href: '#use-cases' },
+    { name: 'Dashboard', href: '#dashboard' },
     { name: 'Contact', href: 'mailto:contact@llm-visibility.ai' },
   ];
 
